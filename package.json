@@ -1,0 +1,23 @@
+{
+  "name": "node.js-constructor-hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachha/Node.js-Constructor-Hangman.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachha/Node.js-Constructor-Hangman/issues"
+  },
+  "homepage": "https://github.com/zachha/Node.js-Constructor-Hangman#readme"
+}
