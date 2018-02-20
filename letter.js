@@ -36,11 +36,4 @@ Letter.prototype.check = function(guessedChar) {
     return this.toString();
 }
 
-let a = new Letter("a");
-console.log(a);
-a.check("c");
-console.log(a.toString());
-
-
-
 module.exports = Letter;
