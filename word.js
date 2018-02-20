@@ -15,7 +15,12 @@ Word.prototype.letterPush = function() {
 }
 
 Word.prototype.letterGuess = function(char) {
-    b.letterGuess(check);
+    this.displayWord = "";
+
+    for(i=0;i<this.letterArr.length;i++) {
+         this.letterArr[i].check(char);
+         this.displayWord += this.letterArr[i].toString() + " ";
+    }
 }
 
 var a = new Letter("a");
@@ -25,5 +30,11 @@ console.log(a.toString());
 var b = new Word("Hello");
 console.log(b.word);
 b.letterPush();
+console.log(b.letterArr);
+console.log(b.displayWord);
+b.letterGuess("L");
+b.letterGuess("H");
+b.letterGuess("E");
+b.letterGuess("O");
 console.log(b.letterArr);
 console.log(b.displayWord);
