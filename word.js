@@ -22,7 +22,7 @@ Word.prototype.letterGuess = function(char) {
          this.displayWord += this.letterArr[i].toString() + " ";
     }
 }
-
+/*
 var a = new Letter("a");
 console.log(a);
 a.check("c");
@@ -38,5 +38,6 @@ b.letterGuess("E");
 b.letterGuess("O");
 console.log(b.letterArr);
 console.log(b.displayWord);
+*/
 
 module.exports = Word;
