@@ -38,3 +38,5 @@ b.letterGuess("E");
 b.letterGuess("O");
 console.log(b.letterArr);
 console.log(b.displayWord);
+
+module.exports = Word;
