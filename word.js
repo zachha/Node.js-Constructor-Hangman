@@ -12,6 +12,7 @@ Word.prototype.letterPush = function() {
         this.letterArr.push(letterObj);
         this.displayWord += letterObj.toString() + " ";
     }
+    console.log(this.displayWord);
 }
 
 Word.prototype.letterGuess = function(char) {
