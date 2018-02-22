@@ -9,6 +9,8 @@ let hangman = {
     alreadyGuessed: [],
     //keeps track of word order in wordbank array
     count: 0,
+    //keeps track of user guesses left
+    guessesLeft: 10,
     //randomizes the array for the user every time they play
     randomWord: function() {
         this.wordBank.sort((function(a,b){return 0.5 - Math.random()}))
