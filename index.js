@@ -60,7 +60,7 @@ let hangman = {
             console.log("\nWOW! YOU CORRECTLY GUESSED ALL THE WORDS, I'M IMPRESSED!\n");
         } else {
             console.log("\nCONGRATULATIONS!!! YOU GUESSED THE WORD!");
-            console.log("\n BUT CAN YOU HANDLE.... ANOTHER WORD ???");
+            console.log("\n BUT CAN YOU HANDLE.... ANOTHER WORD ??? \n");
             this.gameStart();
         }
     }

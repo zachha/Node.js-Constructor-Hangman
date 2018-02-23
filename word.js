@@ -3,7 +3,7 @@ const Letter = require('./letter.js');
 function Word(word) {
     this.word = word.toUpperCase();
     this.letterArr = [];
-    this.displayWord = ""
+    this.displayWord = "\n";
 }
 
 Word.prototype.letterPush = function() {
@@ -12,16 +12,18 @@ Word.prototype.letterPush = function() {
         this.letterArr.push(letterObj);
         this.displayWord += letterObj.toString() + " ";
     }
+    this.displayWord += "\n";
     console.log(this.displayWord);
 }
 
 Word.prototype.letterGuess = function(char) {
-    this.displayWord = "";
+    this.displayWord = "\n";
 
     for(i=0;i<this.letterArr.length;i++) {
          this.letterArr[i].check(char);
          this.displayWord += this.letterArr[i].toString() + " ";
     }
+    this.displayWord += "\n";
 }
 /*
 var a = new Letter("a");
