@@ -1,6 +1,7 @@
 //requiring packages and importing constructors
 const Word = require('./word');
 const inquirer = require('inquirer');
+let start;
 
 let hangman = {
     //array of words for user to guess
@@ -17,9 +18,10 @@ let hangman = {
     },
     //keeps the random order of array words going until the user finishes or stops playing
     gameStart: function() {
-        let start = new Word(this.wordBank[this.count]);
+        start = new Word(this.wordBank[this.count]);
         console.log(start);
         start.letterPush();
+        this.ask();
     },
     // initializes a prompt for user to input letter and congratulates them on correct guesses/winning
     ask: function() {
@@ -31,7 +33,10 @@ let hangman = {
         }
     ])
           .then(answers => {
-            // Use user feedback for... whatever!!
+            console.log(answers.userLetter);
+           start.letterGuess(answers.userLetter);
+           console.log(start.displayWord); 
+           this.ask();
           });
     }
 }
