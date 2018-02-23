@@ -10,6 +10,8 @@ let hangman = {
     alreadyGuessed: [],
     //keeps track of word order in wordbank array
     count: 0,
+    //keeps track of letters guessed in word to check win condition
+    stringCount: 0,
     //keeps track of user guesses left
     guessesLeft: 10,
     //randomizes the array for the user every time they play
@@ -33,11 +35,34 @@ let hangman = {
         }
     ])
           .then(answers => {
-            console.log(answers.userLetter);
-           start.letterGuess(answers.userLetter);
-           console.log(start.displayWord); 
-           this.ask();
+            start.letterGuess(answers.userLetter);
+            console.log(start.displayWord); 
+            this.winCondition();
           });
+    },
+    winCondition: function() {
+        for(i=0;i<start.letterArr.length;i++) {
+            if(start.letterArr[i] != "_") {
+                this.stringCount ++;
+            }
+        }
+        if(this.stringCount === start.letterArr.length) {
+            this.count ++;
+            this.gameEnd();
+        } else {
+            this.stringCount = 0;
+            this.ask();  
+        }
+    },
+    gameEnd: function() {
+        if(this.count === this.wordBank.length) {
+            console.log("\nCONGRATULATIONS! ! ! ! !");
+            console.log("\nWOW! YOU CORRECTLY GUESSED ALL THE WORDS, I'M IMPRESSED!\n");
+        } else {
+            console.log("\nCONGRATULATIONS!!! YOU GUESSED THE WORD!");
+            console.log("\n BUT CAN YOU HANDLE.... ANOTHER WORD ???");
+            this.gameStart();
+        }
     }
 }
 hangman.randomWord();
