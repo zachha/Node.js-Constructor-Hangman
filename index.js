@@ -42,13 +42,11 @@ let hangman = {
             this.winCondition();
           });
     },
+    // checks if a letter has been guessed correctly and runs functions to alert the user if they were correct or incorrect, reruns the ask function to keep the prompt going.
     winCondition: function() {
-        //this.stringCount = this.newStringCount;
         for(i=0;i<start.letterArr.length;i++) {
             if(start.letterArr[i] != "_") {
                 this.newStringCount ++;
-                console.log(this.newStringCount);
-                console.log(this.stringCount);
             }
         }
         this.guessConditional();
@@ -64,16 +62,19 @@ let hangman = {
         if(this.newStringCount > this.stringCount) {
                 console.log("\n CORRECT!!");
             } else {
-                console.log("\n INCORRECT!!");
+                console.log("\n INCORRECT!!\n\n"
+                + this.guessesLeft
+                + " GUESSES REMAINING\n");
                 this.guessesLeft --;
             }
         this.stringCount = this.newStringCount;
     },
+    // alerts the user if they run out of guesses 
     loseConditional: function() {
         if(!this.guessesLeft) {
             console.log("\nOH NO! YOU RAN OUT OF GUESSES. BETTER LUCK NEXT TIME...\n")
         }
-    }
+    },
     gameEnd: function() {
         if(this.count === this.wordBank.length) {
             console.log("\nCONGRATULATIONS! ! ! ! !");
