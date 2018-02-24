@@ -5,7 +5,7 @@ function Word(word) {
     this.letterArr = [];
     this.displayWord = "\n";
 }
-
+//uses letter.js constructor on each char of the selected word and displays the underscores for the word
 Word.prototype.letterPush = function() {
     for(i=0; i<this.word.length;i++) {
         let letterObj = new Letter(this.word[i]);
@@ -15,7 +15,7 @@ Word.prototype.letterPush = function() {
     this.displayWord += "\n";
     console.log(this.displayWord);
 }
-
+// checks if the user's guess is correct and updates display
 Word.prototype.letterGuess = function(char) {
     this.displayWord = "\n";
 
@@ -25,22 +25,4 @@ Word.prototype.letterGuess = function(char) {
     }
     this.displayWord += "\n";
 }
-/*
-var a = new Letter("a");
-console.log(a);
-a.check("c");
-console.log(a.toString());
-var b = new Word("Hello");
-console.log(b.word);
-b.letterPush();
-console.log(b.letterArr);
-console.log(b.displayWord);
-b.letterGuess("L");
-b.letterGuess("H");
-b.letterGuess("E");
-b.letterGuess("O");
-console.log(b.letterArr);
-console.log(b.displayWord);
-*/
-
 module.exports = Word;

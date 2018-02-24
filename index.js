@@ -50,34 +50,35 @@ let hangman = {
             }
         }
         this.guessConditional();
-        if(this.stringCount === start.letterArr.length) {
-            this.count ++;
-            this.gameEnd();
-        } else {
-            this.newStringCount = 0;
-            this.ask();  
-        }
+        this.lossCondition();
     },
     guessConditional: function() {
         if(this.newStringCount > this.stringCount) {
-                console.log("\x1b[1;32m%s\x1b[0m", "\n CORRECT!!\n");
+                console.log("\x1b[1;32m\n CORRECT!!\n\x1b[0m", );
             } else {
                 console.log("\x1b[1;31m%s\x1b[0m", "\n INCORRECT!!\n\n" + this.guessesLeft + " GUESSES REMAINING\n");
                 this.guessesLeft --;
             }
+            // THERE'S A BUG IN THESE VARS THAT NEEDS TO BE IRONED OUT
         this.stringCount = this.newStringCount;
     },
     // alerts the user if they run out of guesses 
     lossCondition: function() {
-        if(!this.guessesLeft) {
-            console.log("\nOH NO! YOU RAN OUT OF GUESSES. BETTER LUCK NEXT TIME...\n")
+        if (!this.guessesLeft) {
+          console.log("\x1b[1;35m%s\x1b[0m", "\nOH NO! YOU RAN OUT OF GUESSES. BETTER LUCK NEXT TIME...\n");
+        } else if (this.stringCount === start.letterArr.length) {
+          this.count++;
+          this.gameEnd();
+        } else {
+          this.newStringCount = 0;
+          this.ask();
         }
     },
     // Congratulates and continues after a correct word, ends game after all words guessed
     gameEnd: function() {
         if(this.count === this.wordBank.length) {
-            console.log("\nCONGRATULATIONS! ! ! ! !");
-            console.log("\nWOW! YOU CORRECTLY GUESSED ALL THE WORDS, I'M IMPRESSED!\n");
+            console.log("\x1b[1;32m\n C\x1b[1;31mO\x1b[1;36mN\x1b[1;33mG\x1b[1;34mR\x1b[1;35mA\x1b[1;36mT\x1b[1;37mU\x1b[1;31mL\x1b[1;32mA\x1b[1;33mT\x1b[1;34mI\x1b[1;35mO\x1b[1;36mN\x1b[1;37mS\x1b[1;31m! \x1b[1;32m! \x1b[1;33m!\x1b[0m");
+            console.log("\x1b[1;36m\nWOW! YOU CORRECTLY GUESSED ALL THE WORDS, I'M IMPRESSED!\n\x1b[0m");
         } else {
             console.log("\nCONGRATULATIONS!!! YOU GUESSED THE WORD!");
             console.log("\n BUT CAN YOU HANDLE.... ANOTHER WORD ??? \n");
