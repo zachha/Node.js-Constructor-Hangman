@@ -60,21 +60,20 @@ let hangman = {
     },
     guessConditional: function() {
         if(this.newStringCount > this.stringCount) {
-                console.log("\n CORRECT!!");
+                console.log("\x1b[1;32m%s\x1b[0m", "\n CORRECT!!\n");
             } else {
-                console.log("\n INCORRECT!!\n\n"
-                + this.guessesLeft
-                + " GUESSES REMAINING\n");
+                console.log("\x1b[1;31m%s\x1b[0m", "\n INCORRECT!!\n\n" + this.guessesLeft + " GUESSES REMAINING\n");
                 this.guessesLeft --;
             }
         this.stringCount = this.newStringCount;
     },
     // alerts the user if they run out of guesses 
-    loseConditional: function() {
+    lossCondition: function() {
         if(!this.guessesLeft) {
             console.log("\nOH NO! YOU RAN OUT OF GUESSES. BETTER LUCK NEXT TIME...\n")
         }
     },
+    // Congratulates and continues after a correct word, ends game after all words guessed
     gameEnd: function() {
         if(this.count === this.wordBank.length) {
             console.log("\nCONGRATULATIONS! ! ! ! !");
@@ -86,10 +85,6 @@ let hangman = {
         }
     }
 }
+// initializes necessary functions and starts games
 hangman.randomWord();
 hangman.gameStart();
-
-
-//User letter input (validation thru inquirer code is possible I think)
-
-//keeps track of # of guesses
