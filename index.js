@@ -12,8 +12,10 @@ let hangman = {
     count: 0,
     //keeps track of letters guessed in word to check win condition
     stringCount: 0,
+    newStringCount: 0,
     //keeps track of user guesses left
     guessesLeft: 10,
+    //keeps track of letters 
     //randomizes the array for the user every time they play
     randomWord: function() {
         this.wordBank.sort((function(a,b){return 0.5 - Math.random()}))
@@ -41,19 +43,37 @@ let hangman = {
           });
     },
     winCondition: function() {
+        //this.stringCount = this.newStringCount;
         for(i=0;i<start.letterArr.length;i++) {
             if(start.letterArr[i] != "_") {
-                this.stringCount ++;
+                this.newStringCount ++;
+                console.log(this.newStringCount);
+                console.log(this.stringCount);
             }
         }
+        this.guessConditional();
         if(this.stringCount === start.letterArr.length) {
             this.count ++;
             this.gameEnd();
         } else {
-            this.stringCount = 0;
+            this.newStringCount = 0;
             this.ask();  
         }
     },
+    guessConditional: function() {
+        if(this.newStringCount > this.stringCount) {
+                console.log("\n CORRECT!!");
+            } else {
+                console.log("\n INCORRECT!!");
+                this.guessesLeft --;
+            }
+        this.stringCount = this.newStringCount;
+    },
+    loseConditional: function() {
+        if(!this.guessesLeft) {
+            console.log("\nOH NO! YOU RAN OUT OF GUESSES. BETTER LUCK NEXT TIME...\n")
+        }
+    }
     gameEnd: function() {
         if(this.count === this.wordBank.length) {
             console.log("\nCONGRATULATIONS! ! ! ! !");
