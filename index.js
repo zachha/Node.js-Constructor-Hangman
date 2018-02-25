@@ -24,6 +24,8 @@ let hangman = {
     gameStart: function() {
         start = new Word(this.wordBank[this.count]);
         console.log(start);
+        this.stringCount = 0;
+        this.newStringCount = 0;
         start.letterPush();
         this.ask();
     },
@@ -56,8 +58,8 @@ let hangman = {
         if(this.newStringCount > this.stringCount) {
                 console.log("\x1b[1;32m\n CORRECT!!\n\x1b[0m", );
             } else {
+                this.guessesLeft--;
                 console.log("\x1b[1;31m%s\x1b[0m", "\n INCORRECT!!\n\n" + this.guessesLeft + " GUESSES REMAINING\n");
-                this.guessesLeft --;
             }
             // THERE'S A BUG IN THESE VARS THAT NEEDS TO BE IRONED OUT
         this.stringCount = this.newStringCount;
