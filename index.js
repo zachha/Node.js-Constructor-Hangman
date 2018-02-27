@@ -5,7 +5,7 @@ let start;
 
 let hangman = {
     //array of words for user to guess
-    wordBank: ["Giraffe", "Elephant", "Camel", "Sloth"],
+    wordBank: ["Panda","Giraffe", "Elephant", "Camel", "Sloth", "Hippopotamus", "Stingray", "Jaguar"],
     //array keeps track of letters user has already used
     alreadyGuessed: [],
     //keeps track of word order in wordbank array
@@ -26,6 +26,7 @@ let hangman = {
         console.log(start);
         this.stringCount = 0;
         this.newStringCount = 0;
+        this.guessesLeft = 10;
         start.letterPush();
         this.ask();
     },
@@ -39,7 +40,7 @@ let hangman = {
         }
     ])
           .then(answers => {
-            start.letterGuess(answers.userLetter);
+            start.letterGuess(answers.userLetter.toUpperCase());
             console.log(start.displayWord); 
             this.winCondition();
           });
@@ -82,8 +83,8 @@ let hangman = {
             console.log("\x1b[1;32m\n C\x1b[1;31mO\x1b[1;36mN\x1b[1;33mG\x1b[1;34mR\x1b[1;35mA\x1b[1;36mT\x1b[1;37mU\x1b[1;31mL\x1b[1;32mA\x1b[1;33mT\x1b[1;34mI\x1b[1;35mO\x1b[1;36mN\x1b[1;37mS\x1b[1;31m! \x1b[1;32m! \x1b[1;33m!\x1b[0m");
             console.log("\x1b[1;36m\nWOW! YOU CORRECTLY GUESSED ALL THE WORDS, I'M IMPRESSED!\n\x1b[0m");
         } else {
-            console.log("\nCONGRATULATIONS!!! YOU GUESSED THE WORD!");
-            console.log("\n BUT CAN YOU HANDLE.... ANOTHER WORD ??? \n");
+            console.log("\x1b[1;33m\nCONGRATULATIONS!!! YOU GUESSED THE WORD![0m");
+            console.log("\x1b[1;33m\n BUT CAN YOU HANDLE.... ANOTHER WORD ??? \n[0m");
             this.gameStart();
         }
     }
